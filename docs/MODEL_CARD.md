@@ -1,60 +1,100 @@
 # Model Card — BBO Capstone Optimization Approach
 
 ## 1) Overview
-**Model/approach name:** Weekly hybrid black-box optimizer (Ridge + GP/EI trust-region + heuristics)
+**Approach name:** Weekly Hybrid Black-Box Optimizer
 
-**Versioning:** evolved week-by-week from exploratory to local exploitation strategies.
+**Core components:**
+- Ridge regression local surrogate
+- Gaussian Process + Expected Improvement (BO-style)
+- Trust-region local candidate generation
+- Manual directional heuristics / minimal exploration baselines
+
+**Objective direction:** maximize `y` for all functions.
+
+---
 
 ## 2) Intended use
 ### Intended
-- Sequential weekly optimization in a constrained black-box setting
-- Educational demonstration of iterative surrogate-based search
+- Weekly sequential optimization with limited observations.
+- Transparent educational workflow for method evolution and reflection.
 
 ### Not intended
-- Safety-critical optimization
-- Claims of globally optimal solutions under tiny-data regimes
+- Safety-critical deployment.
+- Strong global-optimality claims under sparse data.
 
-## 3) Details (techniques and evolution)
-- Weeks 1–4: random/manual exploration to establish initial observations
-- Week 5: Ridge surrogate for selected functions (F2/F5/F7)
-- Week 6: mixed policy by function group (strong ML vs local ML vs manual)
-- Week 7: advanced BO-style GP+EI introduced for F5/F7
-- Week 8: trust-region local-only BO to prevent harmful global jumps
-- Week 9: micro-refinement with smaller steps and tighter trust regions
+---
 
-Function-specific strategy rationale:
-- **F5/F7:** stronger nonlinear local modeling benefit → GP+EI trust-region
-- **F2/F3/F4/F8:** stable local linear improvements → Ridge micro/local refinement
-- **F1:** low-priority exploration track (space-filling)
-- **F6:** directional heuristic maintained due to steady trend
+## 3) Week-by-week method evolution
+- **Weeks 1–4:** random/manual exploration to initialize data.
+- **Week 5:** Ridge used on F2/F5/F7 (stable local direction with tiny datasets).
+- **Week 6:** mixed policy by function class:
+  - strong ML exploitation: F5/F7
+  - local ML refinement: F2/F3/F4/F8
+  - manual/exploration: F1/F6
+- **Week 7:** GP+EI (BO-style) introduced for F5/F7; Ridge retained for F2/F3/F4/F8.
+- **Week 8:** switched to local-only trust-region BO for F5/F7 to avoid damaging global jumps.
+- **Week 9:** micro-refinement (smaller step sizes, tighter trust regions, local training emphasis).
 
-## 4) Performance
-Use this section to summarize results across all 8 functions.
+---
 
-Suggested metrics:
-- Best-so-far value by week per function
-- Week-over-week delta (`y_t - y_{t-1}`)
-- Cumulative improvement from first non-random baseline
+## 4) Function-level strategy rationale
+- **F5, F7:** strong nonlinear trend + high upside from local BO; trust regions reduce jump risk.
+- **F2, F3, F4, F8:** Ridge works well for stable local improvements with tiny updates.
+- **F6:** directional heuristic remained reliable and simple.
+- **F1:** low-priority exploration function (minimal space-filling policy).
 
-> Add a table here once your final week data is complete.
+---
 
-## 5) Assumptions and limitations
-Assumptions:
-- Objective is maximization for all functions.
-- Local surrogate direction is informative near best-known points.
-- Small trust regions reduce risk of destructive jumps.
+## 5) Performance summary (Weeks 1–8 observed)
 
-Limitations:
-- Extremely small sample sizes each week.
-- Sensitive to hyperparameter choices (alpha, sigma, xi, step size).
-- No guarantee of global optimum.
-- Function landscapes are unknown and may be non-stationary from sparse observations.
+| Function | Week 1 y | Week 8 y | Delta (W8-W1) | Best observed y | Best week |
+|---|---:|---:|---:|---:|---:|
+| F1 | -3.353e-61 | -7.806e-123 | ~0 (unstable/near-zero) | 4.715e-13 | 3 |
+| F2 | 0.420441 | 0.627259 | +0.206818 | 0.627259 | 8 |
+| F3 | -0.120807 | -0.047884 | +0.072923 | -0.047393 | 6 |
+| F4 | -18.597235 | -12.857055 | +5.740180 | -12.699964 | 5 |
+| F5 | 287.434382 | 413.127892 | +125.693510 | 413.127892 | 8 |
+| F6 | -1.630453 | -1.122296 | +0.508157 | -1.122296 | 8 |
+| F7 | 0.626706 | 1.086263 | +0.459557 | 1.086263 | 8 |
+| F8 | 8.633935 | 8.760408 | +0.126473 | 8.760408 | 8 |
 
-## 6) Ethical considerations
-- Emphasis on transparency and reproducibility through code, datasheet, and method notes.
-- Avoid overclaiming model certainty given tiny data.
-- Encourage peer review and explicit reporting of failed attempts.
+**Weekly movement count (functions improved vs previous week):**
+- Week 5: 6 up / 2 down
+- Week 6: 7 up / 1 down
+- Week 7: 4 up / 4 down (affected by global-jump behavior in F5/F7)
+- Week 8: 7 up / 1 down (after trust-region correction)
 
-## 7) Maintenance and updates
-- Update this card weekly when strategy changes.
-- Document major policy shifts in commit messages and README changelog.
+---
+
+## 6) Assumptions and limitations
+### Assumptions
+- Local surrogate gradients are useful near best-known points.
+- Tight trust regions are safer in later-stage optimization.
+- Maximization objective is consistent across all functions.
+
+### Limitations
+- Very small sample regime (one point/week/function).
+- Hyperparameter sensitivity (alpha, sigma, xi, step size).
+- No global-optimality guarantee.
+- Results depend on candidate generation seeds and local geometry.
+
+---
+
+## 7) Failure modes observed
+- Global BO candidate jumps (notably Week 7 on F5/F7) can severely degrade results.
+- Over-aggressive step sizes can overshoot narrow basins (F2/F4 sensitivity).
+- Near-converged phases need micro-steps; larger moves waste iterations.
+
+---
+
+## 8) Ethical / transparency considerations
+- Strategy, code, and documentation are shared for reproducibility.
+- Failures are explicitly documented (not only improvements).
+- Claims are bounded by sparse-data uncertainty.
+
+---
+
+## 9) Maintenance plan
+- Update this card each week when results are available.
+- Add Week 9 observed outcomes after portal evaluation.
+- Keep changelog links in README for major strategy shifts.
