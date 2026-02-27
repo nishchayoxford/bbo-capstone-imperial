@@ -45,15 +45,20 @@ Now it is populated from the week-to-week script content and observed outcomes.
 - **What failed:** F3 slightly down from Week 7 best (still close to peak).
 - **Next-week adjustment:** enter micro-refinement phase with smaller steps and tighter trust regions.
 
-## Week 9 (planning stage)
+## Week 9
 - **Strategy:** micro-refinement
   - Ridge micro-steps: F2/F3/F4/F8
   - Trust-region BO micro-exploitation: F5/F7
   - Manual micro-continue: F6
   - Minimal effort track: F1
-- **Rationale:** most functions are near current local bests, so precision beats exploration.
-- **Status:** Week 9 queries generated; results pending portal evaluation.
-- **Planned update:** append Week 9 observed outcomes and final capstone reflection after submission.
+- **Rationale:** most functions were near local bests, so precision was prioritized over exploration.
+- **Observed movement vs Week 8:** **5 improved, 3 declined**.
+- **What improved most:**
+  - F5 reached a new best-so-far.
+  - F7 reached a new best-so-far.
+  - F3 and F8 also improved.
+- **What declined:** F2 and F6 dropped from Week 8 peaks; F1 remained near-zero/unstable.
+- **Next-week adjustment:** move to a more unified trust-region local GP+EI planning setup for Week 10.
 
 
 ## Week 10 (planning stage)
