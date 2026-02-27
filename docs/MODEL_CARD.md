@@ -34,6 +34,7 @@
 - **Week 7:** GP+EI (BO-style) introduced for F5/F7; Ridge retained for F2/F3/F4/F8.
 - **Week 8:** switched to local-only trust-region BO for F5/F7 to avoid damaging global jumps.
 - **Week 9:** micro-refinement (smaller step sizes, tighter trust regions, local training emphasis).
+- **Week 10:** trust-region local GP+EI planning generalized to F2–F8, with incumbent-safe selection for F1.
 
 ---
 
@@ -45,24 +46,25 @@
 
 ---
 
-## 5) Performance summary (Weeks 1–8 observed)
+## 5) Performance summary (Weeks 1–9 observed)
 
-| Function | Week 1 y | Week 8 y | Delta (W8-W1) | Best observed y | Best week |
+| Function | Week 1 y | Week 9 y | Delta (W9-W1) | Best observed y | Best week |
 |---|---:|---:|---:|---:|---:|
-| F1 | -3.353e-61 | -7.806e-123 | ~0 (unstable/near-zero) | 4.715e-13 | 3 |
-| F2 | 0.420441 | 0.627259 | +0.206818 | 0.627259 | 8 |
-| F3 | -0.120807 | -0.047884 | +0.072923 | -0.047393 | 6 |
-| F4 | -18.597235 | -12.857055 | +5.740180 | -12.699964 | 5 |
-| F5 | 287.434382 | 413.127892 | +125.693510 | 413.127892 | 8 |
-| F6 | -1.630453 | -1.122296 | +0.508157 | -1.122296 | 8 |
-| F7 | 0.626706 | 1.086263 | +0.459557 | 1.086263 | 8 |
-| F8 | 8.633935 | 8.760408 | +0.126473 | 8.760408 | 8 |
+| F1 | -3.353e-61 | 1.554e-237 | ~0 (unstable/near-zero) | 4.715e-13 | 3 |
+| F2 | 0.420441 | 0.458958 | +0.038517 | 0.627259 | 8 |
+| F3 | -0.120807 | -0.041784 | +0.079023 | -0.041784 | 9 |
+| F4 | -18.597235 | -12.773487 | +5.823748 | -12.699964 | 5 |
+| F5 | 287.434382 | 472.012140 | +184.577758 | 472.012140 | 9 |
+| F6 | -1.630453 | -1.175343 | +0.455110 | -1.122296 | 8 |
+| F7 | 0.626706 | 1.091104 | +0.464397 | 1.091104 | 9 |
+| F8 | 8.633935 | 8.762618 | +0.128683 | 8.762618 | 9 |
 
 **Weekly movement count (functions improved vs previous week):**
 - Week 5: 6 up / 2 down
 - Week 6: 7 up / 1 down
 - Week 7: 4 up / 4 down (affected by global-jump behavior in F5/F7)
 - Week 8: 7 up / 1 down (after trust-region correction)
+- Week 9: 5 up / 3 down (mixed micro-refinement behavior)
 
 ---
 
@@ -96,5 +98,5 @@
 
 ## 9) Maintenance plan
 - Update this card each week when results are available.
-- Add Week 9 observed outcomes after portal evaluation.
+- Add Week 10 observed outcomes after portal evaluation.
 - Keep changelog links in README for major strategy shifts.

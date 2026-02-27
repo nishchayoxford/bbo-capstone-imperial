@@ -27,8 +27,8 @@ Each record represents one evaluation event:
 - F8: 8D
 
 ### Coverage status in repository
-- Weeks 1–8 outcomes are embedded in `scripts/capstoneweek9.py` (`DATA` section).
-- Week 9 script contains **proposed Week 9 queries**; Week 9 outcomes are to be appended after portal evaluation.
+- Weeks 1–9 outcomes are embedded in `scripts/capstoneweek10.py` (`DATA` section).
+- Week 10 script contains **proposed Week 10 queries**; Week 10 outcomes are to be appended after portal evaluation.
 
 ---
 
@@ -49,6 +49,7 @@ Each record represents one evaluation event:
 - **Week 7:** GP+EI (BO-style) introduced for F5/F7; Ridge for F2/F3/F4/F8.
 - **Week 8:** trust-region BO (local-only) for F5/F7 after observing harmful global jumps.
 - **Week 9:** micro-refinement phase with tighter steps/trust regions.
+- **Week 10:** trust-region local GP+EI planning applied broadly (F2–F8) with incumbent-safe handling for F1.
 
 ---
 
@@ -80,7 +81,7 @@ Each record represents one evaluation event:
 ## 6) Known limitations / gaps
 - Very small sample sizes per function (one new point per week).
 - Some early-week rationale is retrospective.
-- Week 9 outcome values are pending (at time of current document version).
+- Week 10 outcome values are pending (at time of current document version).
 
 ---
 

@@ -54,3 +54,14 @@ Now it is populated from the week-to-week script content and observed outcomes.
 - **Rationale:** most functions are near current local bests, so precision beats exploration.
 - **Status:** Week 9 queries generated; results pending portal evaluation.
 - **Planned update:** append Week 9 observed outcomes and final capstone reflection after submission.
+
+
+## Week 10 (planning stage)
+- **Strategy:** trust-region local BO (TuRBO-lite style) for F2–F8 + incumbent-nearby policy for F1.
+- **Highlights:** moved from mixed Week 9 micro-methods to a unified local GP+EI planning template for most functions.
+- **Design choices:**
+  - Local GP is trained on nearest points to incumbent (k-local training).
+  - EI is maximized over large trust-region candidate sets.
+  - Duplicate-avoidance after rounding protects portal submission uniqueness.
+- **Status:** Week 10 queries generated; portal outcomes pending.
+- **Next update:** append Week 10 observed y values and delta-vs-Week 9 after evaluation.
