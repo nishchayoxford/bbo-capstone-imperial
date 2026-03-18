@@ -23,7 +23,7 @@ This project optimizes **8 black-box objective functions (F1–F8)** over weekly
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python scripts/capstoneweek10.py
+python scripts/capstoneweek11.py
 ```
 
 ## Weekly method evolution (high-level)
@@ -34,6 +34,7 @@ python scripts/capstoneweek10.py
 - **Week 8:** Trust-region BO (local only) to avoid harmful global jumps on F5/F7
 - **Week 9:** Micro-refinement phase (tiny steps, local trust-region exploitation)
 - **Week 10:** Trust-region BO applied across F2–F8 with deterministic local GP+EI; incumbent-safe handling for F1
+- **Week 11:** Hybrid continuation from Week 10 outcomes: maximin exploration for F1, adaptive local GP+EI for F2–F7, and fixed-dimension-aware local GP+EI for F8
 
 ## Required assignment documents
 

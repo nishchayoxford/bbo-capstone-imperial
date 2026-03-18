@@ -61,12 +61,22 @@ Now it is populated from the week-to-week script content and observed outcomes.
 - **Next-week adjustment:** move to a more unified trust-region local GP+EI planning setup for Week 10.
 
 
-## Week 10 (planning stage)
+## Week 10
 - **Strategy:** trust-region local BO (TuRBO-lite style) for F2–F8 + incumbent-nearby policy for F1.
 - **Highlights:** moved from mixed Week 9 micro-methods to a unified local GP+EI planning template for most functions.
-- **Design choices:**
-  - Local GP is trained on nearest points to incumbent (k-local training).
-  - EI is maximized over large trust-region candidate sets.
-  - Duplicate-avoidance after rounding protects portal submission uniqueness.
-- **Status:** Week 10 queries generated; portal outcomes pending.
-- **Next update:** append Week 10 observed y values and delta-vs-Week 9 after evaluation.
+- **Observed movement vs Week 9:** **6 improved, 2 declined**.
+- **Improved:** F1, F3, F4, F5, F6, F7.
+- **Declined:** F2, F8.
+- **Best-so-far reached at Week 10:** F3, F4, F5, F6, F7.
+- **Risk note:** F1 remains numerically unstable/near-zero despite nominal improvement.
+
+## Week 11 (planning/submission stage)
+- **Strategy:**
+  - F1: maximin exploration (space-filling reset).
+  - F2–F7: adaptive local GP+EI (sigma estimated from recent step sizes).
+  - F8: local GP+EI with fixed late-history dimensions preserved.
+- **Why this design:**
+  - Preserve momentum on strong improvers (F3/F4/F5/F6/F7).
+  - Recover from Week 10 drops on F2/F8 without global jumps.
+  - Keep F1 exploratory because exploitative signal is weak.
+- **Status:** Week 11 inputs generated and submitted; outcomes pending.
