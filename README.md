@@ -26,6 +26,27 @@ pip install -r requirements.txt
 python scripts/capstoneweek13.py
 ```
 
+## Non-technical explanation (for a general audience)
+This project tries to improve eight unknown “black-box” systems by making one careful guess each week and learning from the returned score. Think of it like tuning a complex machine without seeing its internal wiring: we only observe what we try and how well it performs. I started with broad trial points, then moved to machine-learning-guided search so each new guess became more informed than the last. Over time, the strategy shifted from exploration to precise local refinement, which improved stability and final performance. The repository documents that full journey, including methods, results, limitations, and what changed after each week’s feedback.
+
+## Data
+- Weekly query inputs and outputs are archived under `data/weekly_results/`.
+- A project datasheet documenting data structure, constraints, and collection logic is in `docs/DATASHEET.md`.
+
+## Model and optimisation approach
+- Core methods evolved from Ridge surrogates to local GP+EI and trust-region style BO.
+- Latest planning includes ensemble surrogate scoring (GP + Gradient Boosting) with function-specific exploration/exploitation settings.
+- Full model details, assumptions, trade-offs, and limitations are in `docs/MODEL_CARD.md`.
+
+## Hyperparameter optimisation
+- Hyperparameters were tuned in a practical, week-by-week way (e.g., trust-region radius, candidate pool sizes, EI/UCB balance, sigma scaling, restart seeds).
+- Tuning focused on stable incremental improvement under tiny-data constraints.
+
+## Results
+- Week-by-week results and reflections: `results/weekly_summary.md`
+- Reproducible weekly scripts: `scripts/`
+- Notebook presentation versions: `notebooks/`
+
 ## Weekly method evolution (what was done + what improved)
 
 - **Week 5**
