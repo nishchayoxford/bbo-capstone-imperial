@@ -117,6 +117,8 @@ def plot_surface_slices(X_by_f, y_by_f, grid_n=55):
         ax.legend(loc='upper left', fontsize=8)
         fig.tight_layout()
         fig.savefig(PLOTS / f'{f}_surface_slice.png', dpi=170)
+        # Backward-compatible filename style used in some earlier outputs
+        fig.savefig(PLOTS / f'{f.lower()}_surface_idw.png', dpi=170)
         plt.close(fig)
 
         # contour
