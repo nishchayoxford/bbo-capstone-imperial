@@ -26,17 +26,43 @@ pip install -r requirements.txt
 python scripts/capstoneweek13.py
 ```
 
-## Weekly method evolution (high-level)
+## Weekly method evolution (what was done + what improved)
 
-- **Week 5:** Ridge surrogate for selected functions (F2, F5, F7)
-- **Week 6:** Mixed strategy (strong ML for F5/F7, local ML for F2/F3/F4/F8, manual for F1/F6)
-- **Week 7:** Added GP+EI (BO-style) for F5/F7, Ridge for F2/F3/F4/F8
-- **Week 8:** Trust-region BO (local only) to avoid harmful global jumps on F5/F7
-- **Week 9:** Micro-refinement phase (tiny steps, local trust-region exploitation)
-- **Week 10:** Trust-region BO applied across F2–F8 with deterministic local GP+EI; incumbent-safe handling for F1
-- **Week 11:** Hybrid continuation from Week 10 outcomes: maximin exploration for F1, adaptive local GP+EI for F2–F7, and fixed-dimension-aware local GP+EI for F8
-- **Week 12:** Continuation notebook/script added in the same student-friendly structure
-- **Week 13:** Latest weekly notebook + script aligned to the same format and repository conventions
+- **Week 5**
+  - **What was done:** Introduced Ridge-regression surrogates for selected functions (F2, F5, F7) using Weeks 1–4 data.
+  - **What improved:** First shift from manual guessing to model-guided search; more stable direction selection on low-data regime.
+
+- **Week 6**
+  - **What was done:** Moved to a mixed policy: stronger ML exploitation on F5/F7, safer local ML for F2/F3/F4/F8, manual/exploration for F1/F6.
+  - **What improved:** Better risk control by matching strategy to function behavior; fewer overly aggressive jumps.
+
+- **Week 7**
+  - **What was done:** Added BO-style GP+EI for F5/F7 while keeping Ridge for F2/F3/F4/F8 and heuristics for F1/F6.
+  - **What improved:** Better nonlinear handling on higher-impact functions and stronger exploration/exploitation balance.
+
+- **Week 8**
+  - **What was done:** Switched F5/F7 to trust-region BO (local-only GP+EI), keeping Ridge local tuning on F2/F3/F4/F8.
+  - **What improved:** Reduced damage from global jumps; improved consistency through controlled local search.
+
+- **Week 9**
+  - **What was done:** Entered micro-refinement phase: tiny local steps (Ridge or trust-region BO) around incumbents.
+  - **What improved:** Higher precision late-stage optimization and steadier incremental gains.
+
+- **Week 10**
+  - **What was done:** Generalized trust-region BO workflow across F2–F8 with deterministic local GP+EI and robustness fallbacks; incumbent-safe handling for F1.
+  - **What improved:** More unified optimization pipeline and improved reproducibility.
+
+- **Week 11**
+  - **What was done:** Hybrid continuation from Week 10: maximin exploration for weak-signal F1, adaptive local GP+EI for F2–F7, fixed-dimension-aware local BO for F8.
+  - **What improved:** More function-aware policy design and better handling of constrained/fixed-coordinate behavior in F8.
+
+- **Week 12**
+  - **What was done:** Continued Week 11 structure in a cleaned student-friendly script/notebook pipeline, preserving adaptive local BO behavior and consistent output formatting.
+  - **What improved:** Better repository consistency and easier week-to-week comparison/maintenance.
+
+- **Week 13**
+  - **What was done:** Upgraded to ensemble surrogate search (GP + Gradient Boosting), hybrid UCB/EI scoring, multi-center trust-region candidate generation, and function-specific tuning (including F8 blockwise exploration with all dimensions active).
+  - **What improved:** Stronger robustness to surrogate bias, broader but controlled exploration, and more informed candidate ranking in late-stage optimization.
 
 ## Required assignment documents
 
