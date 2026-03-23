@@ -47,6 +47,25 @@ This project tries to improve eight unknown “black-box” systems by making on
 - Reproducible weekly scripts: `scripts/`
 - Notebook presentation versions: `notebooks/`
 
+### Plot assets (for final report)
+Generate plots:
+```bash
+python scripts/generate_plots.py
+```
+
+Generated images:
+- `results/plots/function_progress.png`
+- `results/plots/function_progress_normalized.png`
+- `results/plots/f1_surface_idw.png`
+- `results/plots/f2_surface_idw.png`
+
+Example visuals:
+
+![Weekly progress (raw)](results/plots/function_progress.png)
+![Weekly progress (normalized)](results/plots/function_progress_normalized.png)
+![F1 surface](results/plots/f1_surface_idw.png)
+![F2 surface](results/plots/f2_surface_idw.png)
+
 ## Weekly method evolution (what was done + what improved)
 
 - **Week 5**
