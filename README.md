@@ -46,6 +46,20 @@ This project tries to improve eight unknown “black-box” systems by making on
 - Week-by-week results and reflections: `results/weekly_summary.md`
 - Reproducible weekly scripts: `scripts/`
 - Notebook presentation versions: `notebooks/`
+- Professional visual outputs: `results/plots/`
+
+### Plot pack (submission-ready)
+Generated with:
+```bash
+python scripts/generate_visualizations.py
+```
+This creates:
+- `results/plots/convergence_all_functions.png`
+- `results/plots/F1_surface_slice.png` ... `F8_surface_slice.png`
+- `results/plots/F1_contour_slice.png` ... `F8_contour_slice.png`
+
+Example:
+![Convergence](results/plots/convergence_all_functions.png)
 
 ### Plot assets (for final report)
 Generate plots:
