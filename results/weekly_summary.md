@@ -70,13 +70,24 @@ Now it is populated from the week-to-week script content and observed outcomes.
 - **Best-so-far reached at Week 10:** F3, F4, F5, F6, F7.
 - **Risk note:** F1 remains numerically unstable/near-zero despite nominal improvement.
 
-## Week 11 (planning/submission stage)
+## Week 11
 - **Strategy:**
   - F1: maximin exploration (space-filling reset).
   - F2–F7: adaptive local GP+EI (sigma estimated from recent step sizes).
   - F8: local GP+EI with fixed late-history dimensions preserved.
-- **Why this design:**
-  - Preserve momentum on strong improvers (F3/F4/F5/F6/F7).
-  - Recover from Week 10 drops on F2/F8 without global jumps.
-  - Keep F1 exploratory because exploitative signal is weak.
-- **Status:** Week 11 inputs generated and submitted; outcomes pending.
+- **Observed movement vs Week 10:** **6 improved, 2 declined**.
+- **Improved:** F2, F4, F5, F7, F8, and a nominal increase on F1.
+- **Declined:** F3 and F6.
+- **Takeaway:** the adaptive local policy recovered F2/F8 while maintaining strong momentum on F4/F5/F7.
+
+## Week 12
+- **Strategy:** continuation of adaptive local BO with function-wise safeguards and stable portal-safe formatting.
+- **Observed movement vs Week 11:** **6 improved, 2 declined**.
+- **Improved:** F1, F2, F4, F5, F6, F7.
+- **Declined:** F3, F8 (both small pullbacks relative to recent highs).
+- **Best-so-far reached at Week 12:** F1, F4, F5, F6, F7.
+- **Takeaway:** late-stage exploitation remained effective across most functions, especially F5/F7.
+
+## Week 13 (planning/submission stage)
+- **Strategy:** ensemble surrogate planning (GP + Gradient Boosting), UCB/EI hybrid scoring, multi-center trust-region search, and function-specific exploration/exploitation settings.
+- **Status:** Week 13 planning artifacts prepared (`scripts/capstoneweek13.py`, `notebooks/capstoneweek13.ipynb`); outcome values pending portal evaluation.

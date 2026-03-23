@@ -35,6 +35,9 @@
 - **Week 8:** switched to local-only trust-region BO for F5/F7 to avoid damaging global jumps.
 - **Week 9:** micro-refinement (smaller step sizes, tighter trust regions, local training emphasis).
 - **Week 10:** trust-region local GP+EI planning generalized to F2–F8, with incumbent-safe selection for F1.
+- **Week 11:** adaptive local GP+EI continuation with function-specific policy (F1 maximin, F8 fixed-dimension-aware handling).
+- **Week 12:** continued late-stage local BO refinement and stable query generation.
+- **Week 13:** ensemble upgrade (GP + Gradient Boosting), hybrid UCB/EI scoring, multi-center trust-region search.
 
 ---
 
@@ -46,25 +49,25 @@
 
 ---
 
-## 5) Performance summary (Weeks 1–9 observed)
+## 5) Performance summary (Weeks 1–12 observed)
 
-| Function | Week 1 y | Week 9 y | Delta (W9-W1) | Best observed y | Best week |
+| Function | Week 1 y | Week 12 y | Delta (W12-W1) | Best observed y | Best week |
 |---|---:|---:|---:|---:|---:|
-| F1 | -3.353e-61 | 1.554e-237 | ~0 (unstable/near-zero) | 4.715e-13 | 3 |
-| F2 | 0.420441 | 0.458958 | +0.038517 | 0.627259 | 8 |
-| F3 | -0.120807 | -0.041784 | +0.079023 | -0.041784 | 9 |
-| F4 | -18.597235 | -12.773487 | +5.823748 | -12.699964 | 5 |
-| F5 | 287.434382 | 472.012140 | +184.577758 | 472.012140 | 9 |
-| F6 | -1.630453 | -1.175343 | +0.455110 | -1.122296 | 8 |
-| F7 | 0.626706 | 1.091104 | +0.464397 | 1.091104 | 9 |
-| F8 | 8.633935 | 8.762618 | +0.128683 | 8.762618 | 9 |
+| F1 | -3.353e-61 | 4.724e-13 | +4.724e-13 | 4.724e-13 | 12 |
+| F2 | 0.420441 | 0.497682 | +0.077241 | 0.627259 | 8 |
+| F3 | -0.120807 | -0.044746 | +0.076061 | -0.034103 | 10 |
+| F4 | -18.597235 | -12.086855 | +6.510379 | -12.086855 | 12 |
+| F5 | 287.434382 | 672.506197 | +385.071815 | 672.506197 | 12 |
+| F6 | -1.630453 | -1.112748 | +0.517705 | -1.112748 | 12 |
+| F7 | 0.626706 | 1.133930 | +0.507224 | 1.133930 | 12 |
+| F8 | 8.633935 | 8.766626 | +0.132691 | 8.766626 | 12 |
 
 **Weekly movement count (functions improved vs previous week):**
-- Week 5: 6 up / 2 down
-- Week 6: 7 up / 1 down
-- Week 7: 4 up / 4 down (affected by global-jump behavior in F5/F7)
-- Week 8: 7 up / 1 down (after trust-region correction)
-- Week 9: 5 up / 3 down (mixed micro-refinement behavior)
+- Week 10: 6 up / 2 down
+- Week 11: 6 up / 2 down
+- Week 12: 6 up / 2 down
+
+(Week 13 is currently a planning stage in this repository snapshot.)
 
 ---
 
@@ -97,6 +100,6 @@
 ---
 
 ## 9) Maintenance plan
-- Update this card each week when results are available.
-- Add Week 10 observed outcomes after portal evaluation.
+- Update this card each week when new portal outcomes are available.
+- Keep `data/weekly_results/` synchronized with script/notebook history.
 - Keep changelog links in README for major strategy shifts.

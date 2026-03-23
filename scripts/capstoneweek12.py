@@ -3,7 +3,7 @@
 
 
 # %% [cell 1]
-# Capstone Week 11 — Student-Friendly Notebook
+# Capstone Week 12 — Student-Friendly Notebook
 # Consistent structure with Weeks 5–10 scripts/notebooks.
 
 # %% [cell 2]
@@ -15,20 +15,20 @@ from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel as C
 
 """
-Capstone Week 11 — Student-Friendly Notes (consistent with Weeks 5–10)
+Capstone Week 12 — Student-Friendly Notes (consistent with Weeks 5–11)
 
 What this script is for
-- Build Week 11 query proposals for F1..F8 using observed Weeks 1–10 history.
+- Build Week 12 query proposals for F1..F8 using observed Weeks 1–10 history.
 - Print one portal-ready point per function.
 
 How to read this file
 1) DATA section: full historical X (queries) and y (scores) up to Week 10.
 2) Helper section: clipping, formatting, splitting history by function.
 3) GP section: local surrogate fit (Matérn Gaussian Process + EI scoring).
-4) Strategy section: function-wise Week 11 policy.
-5) Output section: final Week 11 query strings.
+4) Strategy section: function-wise Week 12 policy.
+5) Output section: final Week 12 query strings.
 
-Week 11 strategy summary
+Week 12 strategy summary
 - F1: maximin exploration (signal is noisy/near-zero, so coverage is useful).
 - F2–F7: local trust-region BO (TuRBO-lite style) with adaptive sigma from recent step sizes.
 - F8: same local BO, but keep dimensions that were fixed historically fixed.
@@ -38,14 +38,14 @@ Safety / portal constraints
 - Duplicate submissions are avoided after 6-decimal formatting.
 
 How to run
-- python /home/nish/anaconda3/capstoneweek11.py
-- Or run in notebook cells (capstoneweek11.ipynb).
+- python scripts/capstoneweek12.py
+- Or run in notebook cells (notebooks/capstoneweek12.ipynb).
 """
 
 np.set_printoptions(suppress=True, precision=6)
 
 # ============================================================
-# DATA: Week 1–10 history used for Week 11 planning
+# DATA: Week 1–10 history used for Week 12 planning
 # ============================================================
 
 # Each week row has 8 entries: [F1, F2, ..., F8]
@@ -244,19 +244,19 @@ def infer_fixed_dims_from_late_history(X_hist, start_week_index=2, atol=0.0):
 # ============================================================
 
 # %% [cell 4]
-# Build Week 11 plan
+# Build Week 12 plan
 # ============================================================
 
 X_by_f, y_by_f = split_by_function(X_hist_weeks, Y_hist_weeks)
-week11 = {}
+week12 = {}
 
 # F1: exploration-first
-week11["F1"] = propose_maximin(X_by_f["F1"], seed=42, n=200000)
+week12["F1"] = propose_maximin(X_by_f["F1"], seed=42, n=200000)
 
 # F2..F7: local BO with adaptive sigma
 for f in ["F2", "F3", "F4", "F5", "F6", "F7"]:
     sigma = sigma_from_last_three_steps(X_by_f[f])
-    week11[f] = propose_turbo_lite(
+    week12[f] = propose_turbo_lite(
         X_by_f[f],
         y_by_f[f],
         sigma_coord=sigma,
@@ -266,7 +266,7 @@ for f in ["F2", "F3", "F4", "F5", "F6", "F7"]:
 # F8: local BO with fixed historical dimensions preserved
 fixed_f8 = infer_fixed_dims_from_late_history(X_by_f["F8"], start_week_index=2, atol=0.0)
 sigma_f8 = sigma_from_last_three_steps(X_by_f["F8"])
-week11["F8"] = propose_turbo_lite(
+week12["F8"] = propose_turbo_lite(
     X_by_f["F8"],
     y_by_f["F8"],
     sigma_coord=sigma_f8,
@@ -274,6 +274,6 @@ week11["F8"] = propose_turbo_lite(
     fixed_dims=fixed_f8,
 )
 
-print("==== WEEK 11 QUERY PLAN (PORTAL FORMAT) ====")
+print("==== WEEK 12 QUERY PLAN (PORTAL FORMAT) ====")
 for f in FNAMES:
-    print(f"{f}: {fmt(clip01(week11[f]))}")
+    print(f"{f}: {fmt(clip01(week12[f]))}")
