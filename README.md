@@ -91,11 +91,17 @@ Generated images:
 - `results/plots/function_progress_normalized.png`
 - `results/plots/f1_surface_idw.png`
 - `results/plots/f2_surface_idw.png`
+- `results/plots/f3_surface_idw.png`
+- `results/plots/f4_surface_idw.png`
+- `results/plots/f5_surface_idw.png`
+- `results/plots/f6_surface_idw.png`
+- `results/plots/f7_surface_idw.png`
+- `results/plots/f8_surface_idw.png`
 
 Notes:
 - The IDW surface plots are generated from the **full cumulative weekly history**, not just early weeks.
 - In the current final repository state, `scripts/generate_plots.py` reads from `data/weekly_results/inputs/13.txt` and `data/weekly_results/outputs/13.txt`.
-- That means the F1 and F2 IDW surfaces include **all observed weeks through Week 13**.
+- That means the IDW surfaces shown below reflect **all observed weeks through Week 13**.
 
 Example visuals:
 
@@ -103,6 +109,12 @@ Example visuals:
 ![Weekly progress (normalized)](results/plots/function_progress_normalized.png)
 ![F1 surface](results/plots/f1_surface_idw.png)
 ![F2 surface](results/plots/f2_surface_idw.png)
+![F3 surface](results/plots/f3_surface_idw.png)
+![F4 surface](results/plots/f4_surface_idw.png)
+![F5 surface](results/plots/f5_surface_idw.png)
+![F6 surface](results/plots/f6_surface_idw.png)
+![F7 surface](results/plots/f7_surface_idw.png)
+![F8 surface](results/plots/f8_surface_idw.png)
 
 ## Weekly method evolution (what was done + what improved)
 
