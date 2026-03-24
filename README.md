@@ -49,6 +49,24 @@ This project tries to improve eight unknown “black-box” systems by making on
 - Notebook presentation versions: `notebooks/`
 - Professional visual outputs: `results/plots/`
 
+### Final Week 13 outcome snapshot
+The repository now includes the actual Week 13 returned results (not just the final query plan).
+
+- **Week 13 improved vs Week 12:** F1, F3, F4, F5, F6, F7
+- **Week 13 declined vs Week 12:** F2, F8
+- **New best-so-far reached at Week 13:** F1, F4, F5, F6, F7
+- **Largest final gain:** F5 reached **910.4815**
+
+Week 13 final outputs:
+- F1: `4.729755051668371e-13`
+- F2: `0.451543392840168`
+- F3: `-0.03635145650154998`
+- F4: `-11.79934325118909`
+- F5: `910.4815138254987`
+- F6: `-1.1060511373402062`
+- F7: `1.1476383217932742`
+- F8: `8.7147110540744`
+
 ### Plot pack (submission-ready)
 Generated with:
 ```bash
@@ -132,8 +150,8 @@ Example visuals:
 
 ## TODO before final submission
 
-- [ ] Add your actual dataset files to `data/`
 - [ ] Fill missing placeholders in `docs/DATASHEET.md`
 - [ ] Fill missing placeholders in `docs/MODEL_CARD.md`
-- [ ] Add plots in `results/plots/`
+- [x] Add plots in `results/plots/`
+- [x] Include Week 13 data and final summary in the repository
 - [ ] Make repo public and submit GitHub link
