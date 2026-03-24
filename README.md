@@ -76,14 +76,18 @@ This creates:
 - `results/plots/convergence_all_functions.png`
 - `results/plots/F1_surface_slice.png` ... `F8_surface_slice.png`
 - `results/plots/F1_contour_slice.png` ... `F8_contour_slice.png`
+- `results/plots/idw_all_functions.png`
 
 Example:
 ![Convergence](results/plots/convergence_all_functions.png)
+
+![IDW all functions](results/plots/idw_all_functions.png)
 
 ### Plot assets (for final report)
 Generate plots:
 ```bash
 python scripts/generate_plots.py
+python scripts/generate_idw_all_functions.py
 ```
 
 Generated images:
@@ -102,6 +106,7 @@ Notes:
 - The IDW surface plots are generated from the **full cumulative weekly history**, not just early weeks.
 - In the current final repository state, `scripts/generate_plots.py` reads from `data/weekly_results/inputs/13.txt` and `data/weekly_results/outputs/13.txt`.
 - That means the IDW surfaces shown below reflect **all observed weeks through Week 13**.
+- `scripts/generate_idw_all_functions.py` creates one combined F1-F8 figure: direct IDW surfaces for F1/F2 and IDW slice visualizations for F3-F8 with higher dimensions fixed at the best observed point.
 
 Example visuals:
 
