@@ -88,6 +88,10 @@ Now it is populated from the week-to-week script content and observed outcomes.
 - **Best-so-far reached at Week 12:** F1, F4, F5, F6, F7.
 - **Takeaway:** late-stage exploitation remained effective across most functions, especially F5/F7.
 
-## Week 13 (planning/submission stage)
-- **Strategy:** ensemble surrogate planning (GP + Gradient Boosting), UCB/EI hybrid scoring, multi-center trust-region search, and function-specific exploration/exploitation settings.
-- **Status:** Week 13 planning artifacts prepared (`scripts/capstoneweek13.py`, `notebooks/capstoneweek13.ipynb`); outcome values pending portal evaluation.
+## Week 13
+- **Strategy:** ensemble surrogate execution (GP + Gradient Boosting), UCB/EI hybrid scoring, multi-center trust-region search, and function-specific exploration/exploitation settings.
+- **Observed movement vs Week 12:** **6 improved, 2 declined**.
+- **Improved:** F1, F3, F4, F5, F6, F7.
+- **Declined:** F2, F8.
+- **Best-so-far reached at Week 13:** F1, F4, F5, F6, F7.
+- **Takeaway:** the final ensemble policy delivered the strongest single-week gain on F5 and solid late-stage improvements across most functions, although F2 and F8 showed that aggressive final-stage exploration still carried downside risk.

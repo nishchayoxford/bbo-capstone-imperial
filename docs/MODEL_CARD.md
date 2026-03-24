@@ -49,25 +49,26 @@
 
 ---
 
-## 5) Performance summary (Weeks 1–12 observed)
+## 5) Performance summary (Weeks 1–13 observed)
 
-| Function | Week 1 y | Week 12 y | Delta (W12-W1) | Best observed y | Best week |
+| Function | Week 1 y | Week 13 y | Delta (W13-W1) | Best observed y | Best week |
 |---|---:|---:|---:|---:|---:|
-| F1 | -3.353e-61 | 4.724e-13 | +4.724e-13 | 4.724e-13 | 12 |
-| F2 | 0.420441 | 0.497682 | +0.077241 | 0.627259 | 8 |
-| F3 | -0.120807 | -0.044746 | +0.076061 | -0.034103 | 10 |
-| F4 | -18.597235 | -12.086855 | +6.510379 | -12.086855 | 12 |
-| F5 | 287.434382 | 672.506197 | +385.071815 | 672.506197 | 12 |
-| F6 | -1.630453 | -1.112748 | +0.517705 | -1.112748 | 12 |
-| F7 | 0.626706 | 1.133930 | +0.507224 | 1.133930 | 12 |
-| F8 | 8.633935 | 8.766626 | +0.132691 | 8.766626 | 12 |
+| F1 | -3.353e-61 | 4.730e-13 | +4.730e-13 | 4.730e-13 | 13 |
+| F2 | 0.420441 | 0.451543 | +0.031103 | 0.627259 | 8 |
+| F3 | -0.120807 | -0.036351 | +0.084456 | -0.034103 | 10 |
+| F4 | -18.597235 | -11.799343 | +6.797892 | -11.799343 | 13 |
+| F5 | 287.434382 | 910.481514 | +623.047132 | 910.481514 | 13 |
+| F6 | -1.630453 | -1.106051 | +0.524402 | -1.106051 | 13 |
+| F7 | 0.626706 | 1.147638 | +0.520932 | 1.147638 | 13 |
+| F8 | 8.633935 | 8.714711 | +0.080776 | 8.766626 | 12 |
 
 **Weekly movement count (functions improved vs previous week):**
 - Week 10: 6 up / 2 down
 - Week 11: 6 up / 2 down
 - Week 12: 6 up / 2 down
+- Week 13: 6 up / 2 down
 
-(Week 13 is currently a planning stage in this repository snapshot.)
+Week 13 delivered new best-so-far outcomes on F1, F4, F5, F6, and F7, while F2 and F8 pulled back relative to Week 12.
 
 ---
 

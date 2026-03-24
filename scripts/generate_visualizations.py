@@ -16,7 +16,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
 
-REPO = Path('/home/nish/.openclaw/workspace-aiml-course/github-bbo-capstone')
+REPO = Path(__file__).resolve().parents[1]
 SOURCE_SCRIPT = REPO / 'scripts/capstoneweek13.py'
 PLOTS = REPO / 'results/plots'
 PLOTS.mkdir(parents=True, exist_ok=True)
@@ -36,12 +36,44 @@ def load_weekly_data():
     x_block = _extract_between(text, 'X_hist_weeks = [', ']\n\nY_hist_weeks')
     y_block = _extract_between(text, 'Y_hist_weeks = np.array([', '], dtype=float)')
 
-    # Rebuild complete literal strings for parsing
-    x_literal = '[' + x_block + ']'
-    y_literal = '[' + y_block + ']'
+    outputs_13 = REPO / 'data' / 'weekly_results' / 'outputs' / '13.txt'
+    inputs_13 = REPO / 'data' / 'weekly_results' / 'inputs' / '13.txt'
 
-    X_weeks = eval(x_literal, {'__builtins__': {}}, {'np': np, 'array': np.array})
-    Y_weeks = np.array(ast.literal_eval(y_literal), dtype=float)
+    if outputs_13.exists() and inputs_13.exists():
+        import re
+        rows_y = []
+        safe_globals = {'np': np, 'array': np.array}
+        for line in outputs_13.read_text(encoding='utf-8').splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            line = re.sub(r"np\\.float64\\(([^\\)]*)\\)", r"\\1", line)
+            rows_y.append(eval(line, {'__builtins__': {}}, safe_globals))
+        Y_weeks = np.array(rows_y, dtype=float)
+
+        safe_globals = {'np': np, 'array': np.array}
+        rows_x = []
+        text_in = inputs_13.read_text(encoding='utf-8')
+        depth = 0
+        start = None
+        for i, ch in enumerate(text_in):
+            if ch == '[':
+                if depth == 0:
+                    start = i
+                depth += 1
+            elif ch == ']':
+                depth -= 1
+                if depth == 0 and start is not None:
+                    expr = text_in[start:i + 1]
+                    rows_x.append(eval(expr, {'__builtins__': {}}, safe_globals))
+                    start = None
+        X_weeks = rows_x
+    else:
+        # Fallback to script-embedded history if raw Week 13 files are absent
+        x_literal = '[' + x_block + ']'
+        y_literal = '[' + y_block + ']'
+        X_weeks = eval(x_literal, {'__builtins__': {}}, {'np': np, 'array': np.array})
+        Y_weeks = np.array(ast.literal_eval(y_literal), dtype=float)
 
     # function-major
     X_by_f, y_by_f = {}, {}

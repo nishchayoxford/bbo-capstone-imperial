@@ -126,8 +126,8 @@ def main():
     outdir = repo / "results" / "plots"
     ensure_dir(outdir)
 
-    outputs_file = repo / "data" / "weekly_results" / "outputs" / "12.txt"
-    inputs_file = repo / "data" / "weekly_results" / "inputs" / "12.txt"
+    outputs_file = repo / "data" / "weekly_results" / "outputs" / "13.txt"
+    inputs_file = repo / "data" / "weekly_results" / "inputs" / "13.txt"
 
     Y = parse_outputs(outputs_file)
     X_weeks = parse_inputs(inputs_file)

@@ -31,11 +31,12 @@ This project tries to improve eight unknown “black-box” systems by making on
 
 ## Data
 - Weekly query inputs and outputs are archived under `data/weekly_results/`.
+- Week 13 inputs/results are included in `data/weekly_results/inputs/13.txt` and `data/weekly_results/outputs/13.txt`.
 - A project datasheet documenting data structure, constraints, and collection logic is in `docs/DATASHEET.md`.
 
 ## Model and optimisation approach
 - Core methods evolved from Ridge surrogates to local GP+EI and trust-region style BO.
-- Latest planning includes ensemble surrogate scoring (GP + Gradient Boosting) with function-specific exploration/exploitation settings.
+- Final Week 13 method used ensemble surrogate scoring (GP + Gradient Boosting) with function-specific exploration/exploitation settings.
 - Full model details, assumptions, trade-offs, and limitations are in `docs/MODEL_CARD.md`.
 
 ## Hyperparameter optimisation
@@ -115,8 +116,8 @@ Example visuals:
   - **What improved:** Better repository consistency and easier week-to-week comparison/maintenance.
 
 - **Week 13**
-  - **What was done:** Upgraded to ensemble surrogate search (GP + Gradient Boosting), hybrid UCB/EI scoring, multi-center trust-region candidate generation, and function-specific tuning (including F8 blockwise exploration with all dimensions active).
-  - **What improved:** Stronger robustness to surrogate bias, broader but controlled exploration, and more informed candidate ranking in late-stage optimization.
+  - **What was done:** Applied the final ensemble surrogate search (GP + Gradient Boosting), hybrid UCB/EI scoring, multi-center trust-region candidate generation, and function-specific tuning (including F8 blockwise exploration with all dimensions active).
+  - **What improved:** Delivered major late-stage gains on F4, F5, F6, and F7, with new best-so-far values also reached on F1; overall 6 functions improved vs Week 12.
 
 ## Required assignment documents
 

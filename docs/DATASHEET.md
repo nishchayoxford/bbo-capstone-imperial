@@ -27,9 +27,9 @@ Each record represents one evaluation event:
 - F8: 8D
 
 ### Coverage status in repository
-- Outcomes through Week 12 are embedded in later scripts (notably `scripts/capstoneweek13.py`, history arrays).
-- Week 13 planning queries are available in `scripts/capstoneweek13.py` and `notebooks/capstoneweek13.ipynb`.
-- Raw text logs under `data/weekly_results/` are partially behind and should be synchronized with script history for archival consistency.
+- Outcomes through Week 13 are archived in `data/weekly_results/outputs/13.txt`.
+- Week 13 submitted queries are archived in `data/weekly_results/inputs/13.txt` and reflected in `scripts/capstoneweek13.py` / `notebooks/capstoneweek13.ipynb`.
+- Raw text logs under `data/weekly_results/` are now the authoritative cumulative archive for final reporting and plotting.
 
 ---
 
@@ -53,7 +53,7 @@ Each record represents one evaluation event:
 - **Week 10:** trust-region local GP+EI planning applied broadly (F2–F8) with incumbent-safe handling for F1.
 - **Week 11:** adaptive local GP+EI continuation; maximin exploration for F1; fixed-dimension-aware policy for F8.
 - **Week 12:** continued local BO refinement with stable query formatting and function-wise safeguards.
-- **Week 13:** ensemble planning upgrade (GP + Gradient Boosting, UCB/EI hybrid scoring, multi-center trust-region search).
+- **Week 13:** ensemble execution upgrade (GP + Gradient Boosting, UCB/EI hybrid scoring, multi-center trust-region search), followed by final returned outcomes archived in the repository.
 
 ---
 
@@ -85,7 +85,7 @@ Each record represents one evaluation event:
 ## 6) Known limitations / gaps
 - Very small sample sizes per function (one new point per week).
 - Some early-week rationale is retrospective.
-- Raw archive files in `data/weekly_results/` are not yet fully synchronized with latest script history (Weeks 11–13).
+- Raw archive files are cumulative and now synchronized through Week 13, but script-embedded history in planning code may still represent the pre-result state used before the final submission.
 
 ---
 

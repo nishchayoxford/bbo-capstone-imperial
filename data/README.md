@@ -9,9 +9,9 @@ Recommended files:
 If you only have logs in scripts, export tables from notebooks or create CSV manually.
 
 Current snapshot in this repo:
-- `data/weekly_results/inputs/` contains cumulative input logs (`1.txt` ... `11.txt`).
-- `data/weekly_results/outputs/` contains cumulative output logs (`1.txt` ... `10.txt`).
+- `data/weekly_results/inputs/` contains cumulative input logs (`1.txt` ... `13.txt`).
+- `data/weekly_results/outputs/` contains cumulative output logs (`1.txt` ... `13.txt`).
 
 Professional data hygiene note:
-- Script/notebook histories now extend through Week 13 planning.
-- Raw text logs in `data/weekly_results/` should be extended to keep parity with scripts (add output logs for Weeks 11–12 and input logs for Weeks 12–13 when available).
+- Raw text logs now include the Week 13 submission and returned outcomes.
+- Plotting/documentation scripts should read from the latest cumulative files so summaries stay aligned with the final repository state.
