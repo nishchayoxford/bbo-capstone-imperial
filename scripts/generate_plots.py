@@ -135,14 +135,16 @@ def main():
     # Progress plots
     plot_progress(Y, outdir)
 
-    # 2D surface plots for F1 and F2 only (the only 2D functions)
+    # 2D surface plots for F1 and F2 only (the only 2D functions).
+    # These use the full cumulative weekly history loaded above
+    # (currently inputs/13.txt and outputs/13.txt, i.e. Weeks 1-13).
     X_f1 = np.asarray([row[0] for row in X_weeks], dtype=float)
     X_f2 = np.asarray([row[1] for row in X_weeks], dtype=float)
     y_f1 = Y[:, 0]
     y_f2 = Y[:, 1]
 
-    plot_2d_surface(X_f1, y_f1, "F1 Surface (IDW interpolation from weekly observations)", outdir / "f1_surface_idw.png")
-    plot_2d_surface(X_f2, y_f2, "F2 Surface (IDW interpolation from weekly observations)", outdir / "f2_surface_idw.png")
+    plot_2d_surface(X_f1, y_f1, "F1 Surface (IDW interpolation from Weeks 1-13 observations)", outdir / "f1_surface_idw.png")
+    plot_2d_surface(X_f2, y_f2, "F2 Surface (IDW interpolation from Weeks 1-13 observations)", outdir / "f2_surface_idw.png")
 
     print("Saved plots to:", outdir)
 

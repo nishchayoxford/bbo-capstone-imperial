@@ -92,6 +92,11 @@ Generated images:
 - `results/plots/f1_surface_idw.png`
 - `results/plots/f2_surface_idw.png`
 
+Notes:
+- The IDW surface plots are generated from the **full cumulative weekly history**, not just early weeks.
+- In the current final repository state, `scripts/generate_plots.py` reads from `data/weekly_results/inputs/13.txt` and `data/weekly_results/outputs/13.txt`.
+- That means the F1 and F2 IDW surfaces include **all observed weeks through Week 13**.
+
 Example visuals:
 
 ![Weekly progress (raw)](results/plots/function_progress.png)
